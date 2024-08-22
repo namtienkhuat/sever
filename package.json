@@ -1,0 +1,25 @@
+{
+    "name": "backend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "./node_modules/.bin/ts-node-dev --respawn --transpile-only --rs --watch src/docs src/index.ts",
+        "start": "yarn build && node build/index.js",
+        "entity:create": "./node_modules/.bin/ts-node ./node_modules/typeorm/cli.js -f /src/database/ormconfig.ts entity:create -n",
+        "entity:revert": "./node_modules/.bin/ts-node ./node_modules/typeorm/cli.js -f /src/database/ormconfig.ts entity:revert",
+        "build": "rm -rf build && tsc",
+        "typeorm": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm -f /src/database/ormconfig.ts",
+        "seeding": "./node_modules/.bin/ts-node-dev src/seeds/index.ts",
+        "lint": "eslint src --fix --cache",
+        "test": "jest --no-cache  --detectOpenHandles --runInBand --forceExit"
+    },
+    "dependencies": {
+        "express": "^4.19.2",
+        "pg": "^8.12.0",
+        "typeorm": "^0.2.31"
+    },
+    "devDependencies": {
+        "@types/node": "^22.5.0"
+    }
+}
